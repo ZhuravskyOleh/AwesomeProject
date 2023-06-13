@@ -6,33 +6,44 @@ import {
     TextInput,
     Image,
     TouchableOpacity,
-    
+    KeyboardAvoidingView,
+    TouchableWithoutFeedback,
+    Keyboard
 } from "react-native";
 
 const RegistrationScreen = () => {
-    return (        
-        <View style={styles.wrap}>
-            <Text style={styles.title}>Реєстрація</Text>                  
-            <TextInput style={styles.input} placeholder="Логін" />
-            <TextInput style={styles.input} placeholder="Адреса електронної пошти" />
-            <TextInput style={styles.input} placeholder="Пароль" />                
-            <TouchableOpacity style={styles.button} onPress={() => { }}>
-                <Text style={styles.buttonText}>Зареєстуватися</Text>
-            </TouchableOpacity>
-            <View style={styles.footerWrap}>
-                <TouchableOpacity>
-                    <Text style={styles.footerText}>Вже є акаунт?</Text>
+    return (
+        <>
+            <KeyboardAvoidingView
+                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                    <View style={styles.formWrap}>
+                        <Text style={styles.title}>Реєстрація</Text>
+                        <TextInput style={styles.input} placeholder="Логін" />
+                        <TextInput style={styles.input} placeholder="Адреса електронної пошти" />
+                        <TextInput style={styles.input} placeholder="Пароль" />
+                        <View style={styles.photoWrapp}>
+                            <TouchableOpacity style={styles.add}>
+                                <Image source={require('../assets/add.png')} />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </TouchableWithoutFeedback>
+            </KeyboardAvoidingView>
+            <View style={styles.bottomWrap}>
+                <TouchableOpacity style={styles.button} onPress={() => { }}>
+                    <Text style={styles.buttonText}>Зареєстуватися</Text>
                 </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style={styles.footerText}>Увійти</Text>
-                </TouchableOpacity>
+                <View style={styles.footerWrap}>
+                    <TouchableOpacity>
+                        <Text style={styles.footerText}>Вже є акаунт?</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <Text style={styles.footerText}>Увійти</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-            <View style={styles.photoWrapp}>
-                <TouchableOpacity style={styles.add}>
-                    <Image source={require('../assets/add.png')}/>
-                </TouchableOpacity>
-            </View>
-        </View>   
+        </>
     );
 };
 
@@ -40,14 +51,18 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    wrap: {
+    formWrap: {
         position:'relative',
         paddingTop: 92,
-        paddingBottom: 45,
-        height: "100%",
+        // paddingBottom: 45,
+        maxHeight: 549,
         backgroundColor: "#fff",
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
+    },
+    bottomWrap: {
+        paddingBottom: 45,
+        backgroundColor:'#fff',
     },
 
     title: {
