@@ -22,11 +22,16 @@ const RegistrationScreen = () => {
                         <View style={styles.formWrap}>
                             <Text style={styles.title}>Реєстрація</Text>
                             <TextInput style={styles.input} placeholder="Логін" />
-                            <TextInput style={styles.input} placeholder="Адреса електронної пошти" />
-                            <TextInput style={styles.input} placeholder="Пароль" />
+                            <TextInput style={styles.input} placeholder="Адреса електронної пошти" textContentType="emailAddress"/>
+                            <View style={styles.passWrap}>
+                                <TextInput style={styles.input} placeholder="Пароль" textContentType="password" />
+                                <TouchableOpacity style={styles.visiblePass}>
+                                    <Text style={styles.passText}>Показати</Text>
+                                </TouchableOpacity>
+                            </View>
                             <View style={styles.photoWrapp}>
                                 <TouchableOpacity style={styles.add}>
-                                    <Image source={require('../assets/add.png')} />
+                                    <Image source={require('../assets/add.png')} style={styles.addIcon} />
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -41,7 +46,7 @@ const RegistrationScreen = () => {
                             <Text style={styles.footerText}>Вже є акаунт?</Text>
                         </TouchableOpacity>
                         <TouchableOpacity>
-                            <Text style={styles.footerText}>Увійти</Text>
+                            <Text style={styles.footerText} >Увійти</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -95,6 +100,19 @@ const styles = StyleSheet.create({
         color: '#BDBDBD',
         fontSize: 16,
     },
+    passWrap: {
+        position:'relative',    
+    },
+
+    visiblePass: {
+        position: 'absolute',
+        right: 32,
+        top: 16,
+    },
+
+    passText: {
+        color:'#1B4371'
+    },
 
     button: {
         marginTop: 43,
@@ -126,7 +144,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 400,
         color: '#1B4371',
-        textDecorationLine: 'underline',
+        // textDecorationLine: 'underline',
     },
 
     photoWrapp: {
@@ -146,6 +164,10 @@ const styles = StyleSheet.create({
         width: 25,
         height: 25,
         borderRadius: 50,
+    },
+    addIcon: {
+        width:25,
+        height:25,
     }
 });
 
