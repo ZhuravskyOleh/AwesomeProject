@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import {
     View,
     StyleSheet,
@@ -13,16 +13,43 @@ import {
 } from "react-native";
 
 const LoginScreen = () => {
-        return (
+    const [focusedInput, setFocusedInput] = useState("");
+
+  const handleFocus = (inputName) => {
+    setFocusedInput(inputName);
+  };
+
+  const handleBlur = () => {
+    setFocusedInput("");
+  };
+    return (
         <View style={styles.container}>
-            <ImageBackground source={require('../assets/bg.jpg')} resizeMode="cover" style={styles.image}>            
+            <ImageBackground source={require('../assets/bg.jpg')} resizeMode="cover" style={styles.image}>
                 <KeyboardAvoidingView
                     behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
                     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                         <View style={styles.formWrap}>
                             <Text style={styles.title}>Увійти</Text>
-                            <TextInput style={styles.input} placeholder="Адреса електронної пошти" />
-                            <TextInput style={styles.passInput} placeholder="Пароль" />
+                            <TextInput
+                                style={[
+                                    styles.input,
+                                    focusedInput === "email" && styles.focusedInput,
+                                ]}
+                                onFocus={() => handleFocus("email")}
+                                onBlur={handleBlur}
+                                placeholder="Адреса електронної пошти"
+                                textContentType="emailAddress"
+                            />
+                            <TextInput
+                                style={[
+                                    styles.input,
+                                    focusedInput === "password" && styles.focusedInput,
+                                ]}
+                                onFocus={() => handleFocus("password")}
+                                onBlur={handleBlur}
+                                placeholder="Пароль"
+                                textContentType="password"
+                            />
                         </View>
                     </TouchableWithoutFeedback>
                 </KeyboardAvoidingView>
@@ -33,11 +60,10 @@ const LoginScreen = () => {
                     <View style={styles.footerWrap}>
                         <TouchableOpacity>
                             <Text style={styles.footerText}>Немає акаунту?</Text>
-                        </TouchableOpacity>
-                        
+                        </TouchableOpacity>                        
                     </View>
                 </View>
-            </ImageBackground>             
+            </ImageBackground>
         </View>
     );
 };
@@ -87,6 +113,10 @@ const styles = StyleSheet.create({
         color: '#BDBDBD',
         fontSize: 16,
     },
+
+    focusedInput: {
+        borderColor: "#FF6C00",
+  },
 
     passInput: {
         width: 343,
