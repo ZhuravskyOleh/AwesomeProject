@@ -5,6 +5,7 @@ import {
     Text,
     TextInput,
     Image,
+    ImageBackground,
     TouchableOpacity,
     KeyboardAvoidingView,
     TouchableWithoutFeedback,
@@ -13,37 +14,39 @@ import {
 
 const RegistrationScreen = () => {
     return (
-        <>
-            <KeyboardAvoidingView
-                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                    <View style={styles.formWrap}>
-                        <Text style={styles.title}>Реєстрація</Text>
-                        <TextInput style={styles.input} placeholder="Логін" />
-                        <TextInput style={styles.input} placeholder="Адреса електронної пошти" />
-                        <TextInput style={styles.input} placeholder="Пароль" />
-                        <View style={styles.photoWrapp}>
-                            <TouchableOpacity style={styles.add}>
-                                <Image source={require('../assets/add.png')} />
-                            </TouchableOpacity>
+        <View style={styles.container}>
+            <ImageBackground source={require('../assets/bg.jpg')} resizeMode="cover" style={styles.image}>            
+                <KeyboardAvoidingView
+                    behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+                    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                        <View style={styles.formWrap}>
+                            <Text style={styles.title}>Реєстрація</Text>
+                            <TextInput style={styles.input} placeholder="Логін" />
+                            <TextInput style={styles.input} placeholder="Адреса електронної пошти" />
+                            <TextInput style={styles.input} placeholder="Пароль" />
+                            <View style={styles.photoWrapp}>
+                                <TouchableOpacity style={styles.add}>
+                                    <Image source={require('../assets/add.png')} />
+                                </TouchableOpacity>
+                            </View>
                         </View>
+                    </TouchableWithoutFeedback>
+                </KeyboardAvoidingView>
+                <View style={styles.bottomWrap}>
+                    <TouchableOpacity style={styles.button} onPress={() => { }}>
+                        <Text style={styles.buttonText}>Зареєстуватися</Text>
+                    </TouchableOpacity>
+                    <View style={styles.footerWrap}>
+                        <TouchableOpacity>
+                            <Text style={styles.footerText}>Вже є акаунт?</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <Text style={styles.footerText}>Увійти</Text>
+                        </TouchableOpacity>
                     </View>
-                </TouchableWithoutFeedback>
-            </KeyboardAvoidingView>
-            <View style={styles.bottomWrap}>
-                <TouchableOpacity style={styles.button} onPress={() => { }}>
-                    <Text style={styles.buttonText}>Зареєстуватися</Text>
-                </TouchableOpacity>
-                <View style={styles.footerWrap}>
-                    <TouchableOpacity>
-                        <Text style={styles.footerText}>Вже є акаунт?</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-                        <Text style={styles.footerText}>Увійти</Text>
-                    </TouchableOpacity>
                 </View>
-            </View>
-        </>
+            </ImageBackground>             
+        </View>
     );
 };
 
@@ -51,6 +54,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
+
+    image: {
+        flex: 1,
+        justifyContent: 'flex-end',
+    },
+    
     formWrap: {
         position:'relative',
         paddingTop: 92,
@@ -60,6 +69,7 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
     },
+
     bottomWrap: {
         paddingBottom: 45,
         backgroundColor:'#fff',
@@ -85,6 +95,7 @@ const styles = StyleSheet.create({
         color: '#BDBDBD',
         fontSize: 16,
     },
+
     button: {
         marginTop: 43,
         marginLeft: 16,
@@ -96,24 +107,28 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
+
     buttonText: {
         color: '#ffffff',
         fontSize: 16,
         lineHeight: 19,
         fontWeight: 400,
     },
+
     footerWrap: {
         display: 'flex',
         flexDirection: 'row',
         gap: 5,
         justifyContent: 'center',
     },
+
     footerText: {
         fontSize: 16,
         fontWeight: 400,
         color: '#1B4371',
         textDecorationLine: 'underline',
     },
+
     photoWrapp: {
         position: 'absolute',
         top: -60,
@@ -123,15 +138,14 @@ const styles = StyleSheet.create({
         backgroundColor: "#F6F6F6",
         borderRadius:16,
     },
+    
     add: {
         position: 'absolute',
         right: -12,
         bottom:14,
         width: 25,
         height: 25,
-        borderRadius: '50%',
-        // borderWidth: 1,
-        // borderColor:'#FF6C00',
+        borderRadius: 50,
     }
 });
 
