@@ -11,9 +11,14 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
+import {  useFonts, Roboto_400Regular, Roboto_500Medium } from '@expo-google-fonts/roboto';
 
 const RegistrationScreen = () => {
   const [focusedInput, setFocusedInput] = useState("");
+  const [fontsLoaded] = useFonts({
+    Roboto_400Regular,
+    Roboto_500Medium
+  })
 
   const handleFocus = (inputName) => {
     setFocusedInput(inputName);
@@ -123,6 +128,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   title: {
+    fontFamily:'Roboto_500Medium',
     fontSize: 30,
     fontWeight: "bold",
     textAlign: "center",
@@ -139,6 +145,7 @@ const styles = StyleSheet.create({
     borderColor: "#E8E8E8",
     borderRadius: 8,
     color: "#BDBDBD",
+    fontFamily:'Roboto_400Regular',
     fontSize: 16,
   },
   focusedInput: {
@@ -154,6 +161,8 @@ const styles = StyleSheet.create({
   },
   passText: {
     color: "#1B4371",
+    fontFamily:'Roboto_400Regular',
+    fontSize:16
   },
   button: {
     marginTop: 43,
@@ -168,6 +177,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#ffffff",
+    fontFamily:'Roboto_400Regular',
     fontSize: 16,
     lineHeight: 19,
     fontWeight: "400",
@@ -179,6 +189,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   footerText: {
+    fontFamily:'Roboto_400Regular',
     fontSize: 16,
     fontWeight: "400",
     color: "#1B4371",
