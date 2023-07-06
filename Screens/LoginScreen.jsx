@@ -4,6 +4,7 @@ import {
     StyleSheet,
     Text,
     TextInput,
+    Platform,
     Image,
     ImageBackground,
     TouchableOpacity,
@@ -131,7 +132,7 @@ const styles = StyleSheet.create({
     focusedInput: {
         borderColor: "#FF6C00",
     },
-    
+
     passWrap: {
         position: "relative",
     },

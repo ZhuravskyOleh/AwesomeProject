@@ -2,6 +2,7 @@ import React from "react";
 import {
     View,
     StyleSheet,
+    Platform,
     Text,
     TextInput,
     Image,
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
     },
     main: {
         
-        height: 641
+        height: Platform.OS === 'ios' ? 641 : 685
     },
     footer: {
         justifyContent: 'space-around',

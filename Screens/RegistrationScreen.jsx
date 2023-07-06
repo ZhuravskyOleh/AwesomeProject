@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   View,
   StyleSheet,
+  Platform,
   Text,
   TextInput,
   Image,
