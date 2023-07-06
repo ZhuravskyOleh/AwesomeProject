@@ -111,10 +111,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+
   image: {
     flex: 1,
     justifyContent: "flex-end",
   },
+
   formWrap: {
     position: "relative",
     paddingTop: 92,
@@ -123,17 +125,20 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
   },
+
   bottomWrap: {
     paddingBottom: 45,
     backgroundColor: "#fff",
   },
+
   title: {
-    fontFamily:'Roboto_500Medium',
+    fontFamily: 'Roboto_500Medium',
     fontSize: 30,
     fontWeight: "bold",
     textAlign: "center",
     marginBottom: 33,
   },
+
   input: {
     width: 343,
     backgroundColor: "#F6F6F6",
@@ -145,25 +150,30 @@ const styles = StyleSheet.create({
     borderColor: "#E8E8E8",
     borderRadius: 8,
     color: "#BDBDBD",
-    fontFamily:'Roboto_400Regular',
+    fontFamily: 'Roboto_400Regular',
     fontSize: 16,
   },
+
   focusedInput: {
     borderColor: "#FF6C00",
   },
+
   passWrap: {
     position: "relative",
   },
+
   visiblePass: {
     position: "absolute",
     right: 32,
     top: 16,
   },
+
   passText: {
     color: "#1B4371",
-    fontFamily:'Roboto_400Regular',
-    fontSize:16
+    fontFamily: 'Roboto_400Regular',
+    fontSize: 16
   },
+
   button: {
     marginTop: 43,
     marginLeft: 16,
@@ -175,25 +185,29 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+
   buttonText: {
     color: "#ffffff",
-    fontFamily:'Roboto_400Regular',
+    fontFamily: 'Roboto_400Regular',
     fontSize: 16,
     lineHeight: 19,
     fontWeight: "400",
   },
+
   footerWrap: {
     display: "flex",
     flexDirection: "row",
     gap: 5,
     justifyContent: "center",
   },
+
   footerText: {
-    fontFamily:'Roboto_400Regular',
+    fontFamily: 'Roboto_400Regular',
     fontSize: 16,
     fontWeight: "400",
     color: "#1B4371",
   },
+
   photoWrapp: {
     position: "absolute",
     top: -60,
@@ -203,6 +217,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F6F6F6",
     borderRadius: 16,
   },
+
   add: {
     position: "absolute",
     right: -12,
@@ -211,6 +226,7 @@ const styles = StyleSheet.create({
     height: 25,
     borderRadius: 50,
   },
+
   addIcon: {
     width: 25,
     height: 25,

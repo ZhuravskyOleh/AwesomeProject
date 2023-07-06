@@ -8,9 +8,9 @@ import PostsScreen from './Screens/PostsScreen';
 
 const App = () => (
   <View style={styles.container}>
-    <RegistrationScreen/>
+    {/* <RegistrationScreen/> */}
     {/* <LoginScreen /> */}
-    {/* <PostsScreen /> */}
+    <PostsScreen />
   </View>
 );
 

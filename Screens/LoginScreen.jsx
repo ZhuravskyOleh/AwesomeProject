@@ -11,17 +11,24 @@ import {
     TouchableWithoutFeedback,
     Keyboard
 } from "react-native";
+import {  useFonts, Roboto_400Regular, Roboto_500Medium } from '@expo-google-fonts/roboto';
+
 
 const LoginScreen = () => {
+    const [fontsLoaded] = useFonts({
+        Roboto_400Regular,
+        Roboto_500Medium
+    });
+
     const [focusedInput, setFocusedInput] = useState("");
 
-  const handleFocus = (inputName) => {
-    setFocusedInput(inputName);
-  };
+    const handleFocus = (inputName) => {
+        setFocusedInput(inputName);
+    };
 
-  const handleBlur = () => {
-    setFocusedInput("");
-  };
+    const handleBlur = () => {
+        setFocusedInput("");
+    };
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../assets/bg.jpg')} resizeMode="cover" style={styles.image}>
@@ -40,16 +47,21 @@ const LoginScreen = () => {
                                 placeholder="Адреса електронної пошти"
                                 textContentType="emailAddress"
                             />
-                            <TextInput
-                                style={[
-                                    styles.input,
-                                    focusedInput === "password" && styles.focusedInput,
-                                ]}
-                                onFocus={() => handleFocus("password")}
-                                onBlur={handleBlur}
-                                placeholder="Пароль"
-                                textContentType="password"
-                            />
+                            <View style={styles.passWrap}>
+                <TextInput
+                  style={[
+                    styles.input,
+                    focusedInput === "password" && styles.focusedInput,
+                  ]}
+                  onFocus={() => handleFocus("password")}
+                  onBlur={handleBlur}
+                  placeholder="Пароль"
+                  textContentType="password"
+                />
+                <TouchableOpacity style={styles.visiblePass}>
+                  <Text style={styles.passText}>Показати</Text>
+                </TouchableOpacity>
+              </View>
                         </View>
                     </TouchableWithoutFeedback>
                 </KeyboardAvoidingView>
@@ -60,7 +72,7 @@ const LoginScreen = () => {
                     <View style={styles.footerWrap}>
                         <TouchableOpacity>
                             <Text style={styles.footerText}>Немає акаунту?</Text>
-                        </TouchableOpacity>                        
+                        </TouchableOpacity>
                     </View>
                 </View>
             </ImageBackground>
@@ -79,7 +91,7 @@ const styles = StyleSheet.create({
     },
     
     formWrap: {
-        position:'relative',
+        position: 'relative',
         paddingTop: 32,
         // paddingBottom: 45,
         maxHeight: 549,
@@ -90,10 +102,11 @@ const styles = StyleSheet.create({
 
     bottomWrap: {
         paddingBottom: 111,
-        backgroundColor:'#fff',
+        backgroundColor: '#fff',
     },
 
     title: {
+        fontFamily: 'Roboto_500Medium',
         fontSize: 30,
         fontWeight: 'bold',
         textAlign: 'center',
@@ -111,11 +124,28 @@ const styles = StyleSheet.create({
         borderColor: "#E8E8E8",
         borderRadius: 8,
         color: '#BDBDBD',
+        fontFamily: 'Roboto_400Regular',
         fontSize: 16,
     },
 
     focusedInput: {
         borderColor: "#FF6C00",
+    },
+    
+    passWrap: {
+        position: "relative",
+    },
+
+    visiblePass: {
+        position: "absolute",
+        right: 32,
+        top: 16,
+    },
+
+    passText: {
+    color: "#1B4371",
+    fontFamily:'Roboto_400Regular',
+    fontSize:16
   },
 
     passInput: {
@@ -123,7 +153,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#F6F6F6",
         height: 50,
         marginHorizontal: 16,
-        marginBottom:16,
+        marginBottom: 16,
         padding: 16,
         borderWidth: 1,
         borderColor: "#E8E8E8",
@@ -146,6 +176,7 @@ const styles = StyleSheet.create({
 
     buttonText: {
         color: '#ffffff',
+        fontFamily: 'Roboto_400Regular',
         fontSize: 16,
         lineHeight: 19,
         fontWeight: 400,
@@ -159,6 +190,7 @@ const styles = StyleSheet.create({
     },
 
     footerText: {
+        fontFamily: 'Roboto_400Regular',
         fontSize: 16,
         fontWeight: 400,
         color: '#1B4371',
@@ -167,17 +199,17 @@ const styles = StyleSheet.create({
     photoWrapp: {
         position: 'absolute',
         top: -60,
-        right:128,
+        right: 128,
         width: 120,
         height: 120,
         backgroundColor: "#F6F6F6",
-        borderRadius:16,
+        borderRadius: 16,
     },
     
     add: {
         position: 'absolute',
         right: -12,
-        bottom:14,
+        bottom: 14,
         width: 25,
         height: 25,
         borderRadius: 50,
