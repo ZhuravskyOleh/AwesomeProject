@@ -1,4 +1,5 @@
-  import React, { useState } from "react";
+import React, { useState } from "react";
+  import { useNavigation } from "@react-navigation/core";
   import {
     View,
     StyleSheet,
@@ -20,6 +21,8 @@
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [focusedInput, setFocusedInput] = useState("");
+
+    const navigation = useNavigation();
 
     const handleSubmit = () => {
       console.log({login,email,password})
@@ -121,7 +124,7 @@
               <TouchableOpacity>
                 <Text style={styles.footerText}>Вже є акаунт?</Text>
               </TouchableOpacity>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={()=> navigation.navigate('Login')}>
                 <Text style={styles.footerText}>Увійти</Text>
               </TouchableOpacity>
             </View>

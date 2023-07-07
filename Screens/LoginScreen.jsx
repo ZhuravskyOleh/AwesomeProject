@@ -1,4 +1,5 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/core";
 import {
     View,
     StyleSheet,
@@ -18,8 +19,10 @@ import {
 const LoginScreen = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
     const [focusedInput, setFocusedInput] = useState("");
+
+    const navigation = useNavigation();
 
     const handleFocus = (inputName) => {
         setFocusedInput(inputName);
@@ -30,9 +33,10 @@ const LoginScreen = () => {
     };
 
     const handleLogin = () => {
-        console.log({email,password});
+        console.log({ email, password });
         setEmail('');
         setPassword('');
+        navigation.navigate('Posts');
     };
 
     const togglePasswordVisibility = () => {
@@ -87,7 +91,7 @@ const LoginScreen = () => {
                         <Text style={styles.buttonText}>Увійти</Text>
                     </TouchableOpacity>
                     <View style={styles.footerWrap}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={()=>navigation.navigate('Registration')}>
                             <Text style={styles.footerText}>Немає акаунту?</Text>
                         </TouchableOpacity>
                     </View>

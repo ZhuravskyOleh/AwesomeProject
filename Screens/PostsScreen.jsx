@@ -1,31 +1,25 @@
 import React from "react";
+import { useNavigation } from "@react-navigation/core";
 import {
     View,
     StyleSheet,
     Platform,
     Text,
-    TextInput,
     Image,
-    ImageBackground,
-    TouchableOpacity,
-    KeyboardAvoidingView,
-    TouchableWithoutFeedback,
-    Keyboard,
-    SafeAreaView, 
-    Button
+    TouchableOpacity,   
+    SafeAreaView,   
 } from "react-native";
-import {  useFonts, Roboto_400Regular, Roboto_500Medium } from '@expo-google-fonts/roboto';
+
 
 
 const PostsScreen = () => {
-    const [fontsLoaded] = useFonts({
-        Roboto_500Medium
-    })
+    const navigation = useNavigation();
+
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.header}>
                 <Text style={styles.title}>Публікації</Text>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>navigation.navigate('Login')}>
                     <Image source={require('../assets/log-out.png')} style={styles.logOutIcon} />
                 </TouchableOpacity>
             </View>
