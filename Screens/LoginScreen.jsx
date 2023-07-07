@@ -12,15 +12,13 @@ import {
     TouchableWithoutFeedback,
     Keyboard
 } from "react-native";
-import {  useFonts, Roboto_400Regular, Roboto_500Medium } from '@expo-google-fonts/roboto';
+
 
 
 const LoginScreen = () => {
-    const [fontsLoaded] = useFonts({
-        Roboto_400Regular,
-        Roboto_500Medium
-    });
-
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
     const [focusedInput, setFocusedInput] = useState("");
 
     const handleFocus = (inputName) => {
@@ -29,6 +27,16 @@ const LoginScreen = () => {
 
     const handleBlur = () => {
         setFocusedInput("");
+    };
+
+    const handleLogin = () => {
+        console.log({email,password});
+        setEmail('');
+        setPassword('');
+    };
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
     };
     return (
         <View style={styles.container}>
@@ -47,27 +55,35 @@ const LoginScreen = () => {
                                 onBlur={handleBlur}
                                 placeholder="Адреса електронної пошти"
                                 textContentType="emailAddress"
+                                value={email}
+                                onChangeText={setEmail}
+                                keyboardType="email-address"
                             />
                             <View style={styles.passWrap}>
-                <TextInput
-                  style={[
-                    styles.input,
-                    focusedInput === "password" && styles.focusedInput,
-                  ]}
-                  onFocus={() => handleFocus("password")}
-                  onBlur={handleBlur}
-                  placeholder="Пароль"
-                  textContentType="password"
-                />
-                <TouchableOpacity style={styles.visiblePass}>
-                  <Text style={styles.passText}>Показати</Text>
-                </TouchableOpacity>
-              </View>
+                                <TextInput
+                                    style={[
+                                        styles.input,
+                                        focusedInput === "password" && styles.focusedInput,
+                                    ]}
+                                    onFocus={() => handleFocus("password")}
+                                    onBlur={handleBlur}
+                                    placeholder="Пароль"
+                                    textContentType="password"
+                                    secureTextEntry={!showPassword}
+                                    value={password}
+                                    onChangeText={setPassword}
+                                />
+                                <TouchableOpacity style={styles.visiblePass} onPress={togglePasswordVisibility}>
+                                    <Text style={styles.passText}>
+                                        {showPassword ? "Приховати" : "Показати"}
+                                    </Text>
+                                </TouchableOpacity>
+                            </View>
                         </View>
                     </TouchableWithoutFeedback>
                 </KeyboardAvoidingView>
                 <View style={styles.bottomWrap}>
-                    <TouchableOpacity style={styles.button} onPress={() => { }}>
+                    <TouchableOpacity style={styles.button} onPress={handleLogin}>
                         <Text style={styles.buttonText}>Увійти</Text>
                     </TouchableOpacity>
                     <View style={styles.footerWrap}>
@@ -144,10 +160,10 @@ const styles = StyleSheet.create({
     },
 
     passText: {
-    color: "#1B4371",
-    fontFamily:'Roboto_400Regular',
-    fontSize:16
-  },
+        color: "#1B4371",
+        fontFamily: 'Roboto_400Regular',
+        fontSize: 16
+    },
 
     passInput: {
         width: 343,
