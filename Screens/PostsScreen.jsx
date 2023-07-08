@@ -29,7 +29,7 @@ const PostsScreen = () => {
                 <TouchableOpacity>
                     <Image source={require('../assets/grid.png')} style={styles.gridIcon} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.add}>
+                <TouchableOpacity style={styles.add} onPress={()=>navigation.navigate('CreatePost')}>
                     <Image source={require('../assets/Union.png')} style={styles.unionIcon} />
                 </TouchableOpacity>
                 <TouchableOpacity>
@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 16,
+        backgroundColor:'#ffffff'
     },
     header: {
         margin: 0,
