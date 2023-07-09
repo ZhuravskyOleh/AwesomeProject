@@ -32,7 +32,7 @@ const PostsScreen = () => {
                 <TouchableOpacity style={styles.add} onPress={()=>navigation.navigate('CreatePost')}>
                     <Image source={require('../assets/Union.png')} style={styles.unionIcon} />
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>navigation.navigate('Profile')}>
                     <Image source={require('../assets/user.png')} style={styles.userIcon} />
                 </TouchableOpacity>
             </View>
